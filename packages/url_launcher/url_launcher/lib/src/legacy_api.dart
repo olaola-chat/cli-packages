@@ -155,12 +155,14 @@ Future<void> closeWebView() async {
 /// therefore keeping url_launcher forward-compatible with future versions of
 /// Flutter for longer).
 RenderView? _findImplicitRenderView() {
-  final FlutterView? implicitFlutterView =
-      WidgetsBinding.instance.platformDispatcher.implicitView;
-  if (implicitFlutterView == null) {
-    return null;
-  }
-  return WidgetsBinding.instance.renderViews
-      .where((RenderView v) => v.flutterView == implicitFlutterView)
-      .firstOrNull;
+  // WW: 临时修改，兼容dart3.13，这里的方法项目目前不会用到，同时这个关联的方法也不推荐使用
+  return null;
+  // final FlutterView? implicitFlutterView =
+  //     WidgetsBinding.instance.platformDispatcher.implicitView;
+  // if (implicitFlutterView == null) {
+  //   return null;
+  // }
+  // return WidgetsBinding.instance.renderViews
+  //     .where((RenderView v) => v.flutterView == implicitFlutterView)
+  //     .firstOrNull;
 }
